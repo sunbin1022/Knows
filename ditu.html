@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>学习谷位置</title>
+		 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=WNxF2XxwXz4WA7sNdUOffXTVeZmBfPSG"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+		<style type="text/css">
+html,body,#allmap{
+	height: 100%;
+}
+		</style>
+	</head>
+	<body id='ditu'>
+		<div id="allmap"></div>
+		<div id="r-result"></div>
+		<script>
+				// 百度地图API功能
+		var markerArr = [
+   { title:"大望路分区", point:"116.483823,39.913137", address:"北京市朝阳区建国路88号SOHO现代城A座5层", tel:"010-85805568"},
+   { title:"海淀分区", point:"116.331529,39.970296", address:"中关村南大街甲6号铸诚大厦7层703室", tel:"010-5158278"},
+   { title:"崇文门分区", point:"116.424394,39.903664", address:"北京市东城区崇文门外大街3-10号新世界中心写字楼A座12层", tel:"010-67082865"},
+   { title:"西单分区", point:"116.382592,39.909777", address:"西绒线胡同28号天安国汇大厦515室（近首都时代广场）", tel:"010-59739238"}
+];
+var map = new BMap.Map("allmap"); 
+map.centerAndZoom(new BMap.Point(116.417854,39.921988), 12);
+map.enableScrollWheelZoom(true);
+var point = new Array(); //存放标注点经纬信息的数组
+   var marker = new Array(); //存放标注点对象的数组
+   var info = new Array(); //存放提示信息窗口对象的数组
+   var searchInfoWindow =new Array();//存放检索信息窗口对象的数组
+   for (var i = 0; i < markerArr.length; i++) {
+   var p0 = markerArr[i].point.split(",")[0]; //
+   var p1 = markerArr[i].point.split(",")[1]; //按照原数组的point格式将地图点坐标的经纬度分别提出来
+   point[i] = new BMap.Point(p0, p1); //循环生成新的地图点
+   marker[i] = new BMap.Marker(point[i]); //按照地图点坐标生成标记
+map.addOverlay(marker[i]);
+//跳动的动画
+//    marker[i].setAnimation(BMAP_ANIMATION_BOUNCE); 
+　　　　　　　　　　　　　　//显示marker的title，marker多的话可以注释掉
+var label = new BMap.Label(markerArr[i].title, { offset: new BMap.Size(20, -10) });
+marker[i].setLabel(label);
+   // 创建信息窗口对象
+   info[i] ="<p style='font-size:14px;line-height:1.8em;'>"+"地址："+ markerArr[i].address +"</br> 电话：<a href=tel:"+markerArr[i].tel+">"+ markerArr[i].tel +"</a></br>"+"<a href='http://cs.ecqun.com/mobile/rand?id=1795188'>在线资讯</a>"+"</p>";
+//创建百度样式检索信息窗口对象
+   searchInfoWindow[i] = new BMapLib.SearchInfoWindow(map, info[i], {
+   title : markerArr[i].title, //标题
+   width : 290, //宽度
+   height : 105, //高度
+   panel :"panel", //检索结果面板
+   enableAutoPan : true, //自动平移
+   searchTypes :[
+ //BMAPLIB_TAB_TO_HERE, //到这里去
+]
+});
+
+//添加点击事件
+marker[i].addEventListener("click",
+(function(k){
+   // js 闭包
+   return function(){
+//将被点击marker置为中心
+   map.centerAndZoom(point[k], 12);
+//在marker上打开检索信息窗口
+searchInfoWindow[k].open(point[k]);
+}
+})(i)
+);
+}
+		</script>
+	</body>
+</html>

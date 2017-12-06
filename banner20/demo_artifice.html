@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>kinMaxShow 技巧效果 -jquery.kinMaxShow V1.0</title>
+<link type="text/css" href="_doc/base.css" rel="stylesheet" />
+<style type="text/css">
+body{ margin:0; padding:50px 0 0 0;}
+
+#show{width:600px; margin:0 auto;}
+#kinMaxShow{width:600px; height:300px; visibility:hidden; overflow:hidden;}
+
+</style>
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.kinMaxShow-1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#kinMaxShow").kinMaxShow({
+		height:300,
+		button:{
+				switchEvent:'mouseover',
+				showIndex:true,
+				normal:{width:'18px',height:'18px',lineHeight:'18px',left:'16px',bottom:'16px',fontSize:'12px',opacity:0.8,background:"#666666",border:"1px solid #999999",color:"#CCCCCC",marginRight:'6px'},
+				focus:{background:"#CC0000",border:"1px solid #FF0000",color:"#000000"}
+			}			
+	});
+
+
+});
+
+</script>
+</head>
+
+<body>
+	<div id="show">
+        <div id="kinMaxShow">
+        
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/1.jpg"   /></a>
+            </div>
+            
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/2.jpg"  /></a>
+            </div>
+            
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/3.jpg"   /></a>
+            </div>
+            
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/4.jpg"   /></a>
+            </div>
+    
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/5.jpg"   /></a>
+            </div>
+    
+            <div>
+                <a href="http://www.qq.com" target="_blank"><img src="images/demo_artifice_images/6.jpg"   /></a>
+            </div>		
+                
+        </div>
+    
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+#container {
+	min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto
+}
+		</style>
+	</head>
+	<body>
+<script src="../../code/highcharts.js"></script>
+<script src="../../code/modules/exporting.js"></script>
+
+<div id="container"></div>
+
+
+
+		<script type="text/javascript">
+
+Highcharts.chart('container', {
+
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
+
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            pointStart: 1
+        }
+    },
+
+    series: [{
+        name: 'Installation',
+        data: [439, 525, 571, 696, 970, 1199, 1371, 1541]
+    }, {
+        name: 'Manufacturing',
+        data: [249, 240, 297, 298, 324, 302, 381, 404]
+    }, {
+        name: 'Sales & Distribution',
+        data: [114, 122, 165, 191, 285, 377, 327, 393]
+    }, {
+        name: 'Project Development',
+        data: [null, null, 78, 425, 112, 222, 300, 327]
+    }, {
+        name: 'Other',
+        data: [108, 58, 85, 248, 89, 116, 174, 111]
+    }]
+
+});
+		</script>
+	</body>
+</html>
